@@ -1,0 +1,13 @@
+{
+  "name": "syrin-next-checks",
+  "private": true,
+  "scripts": {
+    "test": "node --test tests/facebook-unblock.test.cjs"
+  },
+  "engines": {
+    "node": ">=20.19.0"
+  },
+  "devDependencies": {
+    "linkedom": "0.18.15"
+  }
+}

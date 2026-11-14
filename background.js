@@ -386,22 +386,26 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
               return t === 'bỏ chặn' || t === 'unblock' || a === 'bỏ chặn' || a === 'unblock';
             });
 
-            let targetBtn = null;
-            for (const btn of unblockBtns) {
-              let row = btn.parentElement;
-              for (let i = 0; i < 4 && row && row !== dialog; i++) {
-                const textNodes = Array.from(row.querySelectorAll('span[dir="auto"], div[dir="auto"]')).map(s => (s.textContent || '').trim().toLowerCase());
-                if (textNodes.some(n => n === nameToUnblock || (nameToUnblock.length >= 4 && n.includes(nameToUnblock)))) {
-                  targetBtn = btn;
-                  break;
-                }
-                if (row.getAttribute('role') === 'listitem') break;
-                row = row.parentElement;
-              }
-              if (targetBtn) break;
-            }
+            const normalizeName = value => (value || '').normalize('NFC').trim().toLowerCase();
+            const targetName = normalizeName(nameToUnblock);
+            const targetButtons = unblockBtns.filter(btn => {
+              const row = btn.closest('[role="listitem"]');
+              if (!row || !dialog.contains(row)) return false;
+              const nameNode = Array.from(row.querySelectorAll('span[dir="auto"], div[dir="auto"]')).find(node =>
+                node.closest('[role="listitem"]') === row &&
+                !node.closest('button, [role="button"]') &&
+                !node.querySelector('button, [role="button"], [role="listitem"]')
+              );
+              return normalizeName(nameNode?.textContent) === targetName;
+            });
 
-            if (!targetBtn) return { ok: false, error: 'Không tìm thấy nút Bỏ chặn cho ' + nameToUnblock };
+            if (targetButtons.length === 0) {
+              return { ok: false, error: 'Không xác định được hàng tài khoản của ' + nameToUnblock + '. Hãy bỏ chặn trực tiếp trong cài đặt Facebook.' };
+            }
+            if (targetButtons.length > 1) {
+              return { ok: false, error: 'Có nhiều tài khoản hoặc nút Bỏ chặn khớp tên ' + nameToUnblock + '. Hãy bỏ chặn trực tiếp trong cài đặt Facebook.' };
+            }
+            const targetBtn = targetButtons[0];
 
             targetBtn.click();
             let confirmed = false;

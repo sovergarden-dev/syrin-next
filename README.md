@@ -38,6 +38,22 @@ Chrome sẽ **tạm dừng video** trong cửa sổ bị thu nhỏ (minimize) ho
 - Có thể dùng tính năng **Picture-in-Picture** hoặc chia đôi màn hình.
 - Nếu video vẫn chạy (có tiếng), extension sẽ chuyển video bình thường dù tab không được focus.
 
+## Thay đổi chưa phát hành
+
+- Sửa lỗi chọn nhầm tài khoản khi bỏ chặn Facebook: tên được so khớp chính xác sau khi chuẩn hóa Unicode, chữ hoa/thường và khoảng trắng đầu/cuối. Mỗi nút phải thuộc đúng hàng `[role="listitem"]`; không lấy tên từ ghi chú, hàng bên cạnh hoặc hàng lồng bên trong.
+- Khi có nhiều tài khoản/nút cùng khớp, hoặc giao diện Facebook không cho xác định hàng tài khoản, tiện ích dừng và hướng dẫn bỏ chặn trực tiếp trong cài đặt Facebook. Bản sửa này hoàn thiện phần so khớp từng được mô tả trong v3.20.0 nhưng mã cũ vẫn cho phép khớp một phần tên.
+
+## Kiểm tra cho người phát triển
+
+Dùng Node.js 20.19 trở lên:
+
+```sh
+npm ci --ignore-scripts
+npm test
+```
+
+Bộ kiểm tra gọi hàm xử lý thông điệp của `background.js`, dựng DOM từ HTML và giả lập API Chrome. Các trường hợp bao gồm tên chứa nhau, tên trùng, Unicode, hàng lồng nhau và lỗi thiếu hộp thoại xác nhận. Kiểm tra không truy cập Facebook hay thay đổi danh sách chặn thật; cấu trúc giao diện Facebook đang triển khai vẫn cần được kiểm chứng riêng.
+
 ## Nhật ký cập nhật (v3.20.0 — Khắc phục Lỗi Logic & Tinh giản Mã nguồn Cốt lõi)
 
 Phiên bản hoàn thiện toàn diện dựa trên kết quả kiểm toán độc lập và tham vấn phản biện kỹ thuật cao cấp từ **Notion AI (Sy07)**:
