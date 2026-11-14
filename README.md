@@ -4,11 +4,16 @@ Extension Chrome tự động chuyển sang video tiếp theo khi hết clip tr�
 
 ## Cách cài đặt
 
-1. Tải thư mục `fb-tiktok-auto-next` về máy (hoặc giải nén file zip).
-2. Mở Chrome, vào địa chỉ: `chrome://extensions`
-3. Bật **Developer mode** (Chế độ nhà phát triển) ở góc trên bên phải.
-4. Bấm **Load unpacked** (Tải tiện ích đã giải nén) và chọn thư mục `fb-tiktok-auto-next`.
-5. Mở Facebook Reels, Instagram, TikTok, YouTube Shorts hoặc X — biểu tượng extension sẽ hiện badge **ON**.
+1. Tải file `AutoNext_v<phiên-bản>.zip` trong mục **Assets** của [GitHub Releases](https://github.com/sovergarden-dev/syrin-next/releases). Hoặc mở [repo syrin-next](https://github.com/sovergarden-dev/syrin-next), chọn **Code → Download ZIP** để tải mã nguồn.
+2. Giải nén file ZIP vào một thư mục riêng. Với **Download ZIP** của nhánh `main`, thư mục mã nguồn bên trong là `syrin-next-main`.
+3. Mở Chrome, vào địa chỉ: `chrome://extensions`
+4. Bật **Developer mode** (Chế độ nhà phát triển) ở góc trên bên phải.
+5. Bấm **Load unpacked** (Tải tiện ích đã giải nén) và chọn thư mục chứa trực tiếp file `manifest.json`, cùng các file `background.js`, `content.js`, `features.js` và `popup.html`.
+6. Mở Facebook Reels, Instagram, TikTok, YouTube Shorts hoặc X — biểu tượng extension sẽ hiện badge **ON**.
+
+Nếu Chrome báo không tìm thấy `manifest.json`, hãy mở sâu vào thư mục vừa giải nén và chọn thư mục chứa file này; không chọn file ZIP hoặc thư mục cha của nó.
+
+Khi cập nhật, giải nén bản mới vào thư mục đã dùng để cài, bấm **Reload** trên thẻ tiện ích tại `chrome://extensions`, rồi tải lại các tab video đang mở để nạp content script mới.
 
 ## Tính năng nổi bật
 
