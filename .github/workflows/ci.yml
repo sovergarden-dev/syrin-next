@@ -41,6 +41,12 @@ jobs:
         run: |
           python -c "import json; d = json.load(open('manifest.json')); print('Manifest valid! Version:', d['version'])"
 
+      - name: Install Test Dependencies
+        run: npm ci --ignore-scripts --no-fund
+
+      - name: Test Facebook Unblock Selection
+        run: npm test
+
   release:
     name: Build & Publish Release
     needs: validate
@@ -62,6 +68,10 @@ jobs:
             -x "*backup*" \
             -x "*.tmp" \
             -x "*.log" \
+            -x "node_modules/*" \
+            -x "tests/*" \
+            -x "package.json" \
+            -x "package-lock.json" \
             -x ".vscode/*" \
             -x ".idea/*"
           ls -la "AutoNext_v${{ steps.get_version.outputs.VERSION }}.zip"
