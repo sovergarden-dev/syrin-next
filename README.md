@@ -2,7 +2,7 @@
 
 Tiện ích Chrome tự chuyển sang video tiếp theo khi clip hiện tại kết thúc trên **Facebook Reels**, **Instagram Reels**, **TikTok**, **YouTube Shorts** và **X (Twitter) Videos**.
 
-[Bản ổn định v3.20.0](https://github.com/sovergarden-dev/syrin-next/releases/tag/v3.20.0) · [Cách cài đặt](#cách-cài-đặt)
+[Bản ổn định v3.20.0](https://github.com/sovergarden-dev/syrin-next/releases/tag/v3.20.0) · [Cách cài đặt](#cách-cài-đặt) · [Quyền riêng tư và quyền truy cập](PRIVACY.md)
 
 <img src=".github/assets/popup-v3.20.0.png" width="328" alt="Phần trên của popup Auto Next v3.20.0 trong Chrome, với các công tắc bật tự chuyển video cho từng nền tảng.">
 
